@@ -165,7 +165,9 @@
   </style>
 </head>
 <body>
+  <p id="screenWidth">Screen Width: </p>
   <script>
+    document.getElementById('screenWidth').textContent += window.innerWidth + 'px';
     // Function to get the current day and display the corresponding schedule
     function displaySchedule() {
       var scheduleContainer = document.getElementById('schedule');
