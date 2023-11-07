@@ -29,19 +29,17 @@
       font-weight: 600;
     }
 
-    body {
-      height: 100vh;
+    body, html {
+      height: 100%;
       margin: 0;
+      padding: 0;
+      overflow: hidden;
       text-size-adjust: 100%;
-      
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       gap: 3em;
-      
       background-color: var(--bg);
-      
-      margin: 0 10em;
     }
     body::before,
     body::after {
@@ -117,12 +115,6 @@
 
     .button-m3:not(:disabled) {
       box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
-    }
-    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
     }
     #main-content {
       min-height: calc(100vh - 60px);
