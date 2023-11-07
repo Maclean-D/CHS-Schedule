@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="https://use.typekit.net/usb3efr.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    body, h1, p, ul, a, footer {
+      font-family: "nitti-grotesk", sans-serif;
+    }
+    h1 {
+      font-weight: 500;
+      font-size: 3rem;
+    }
+    p, ul {
+      font-weight: 400;
+      font-size: 1.25rem;
+    }
+    /* For italic text */
+    em {
+      font-family: "nitti-grotesk", sans-serif;
+      font-weight: 400;
+      font-style: italic;
+    }
+    /* For bold text */
+    strong {
+      font-family: "nitti-grotesk", sans-serif;
+      font-weight: 600;
+    }
+
+    body {
+      height: 100vh;
+      margin: 0;
+      
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 3em;
+      
+      background-color: var(--bg);
+      
+      margin: 0 10em;
+    }
+    body::before,
+    body::after {
+      position: absolute;
+      left: 0;
+      top: 0;
+      content: '';
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+
+      opacity: 40%;
+    }
+
+    body::before {
+      background: #a2d2ff;
+      filter: url(#noiseFilter);
+    }
+    p {
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+    .button-m3 {
+      font-family: "nitti-grotesk", sans-serif;
+      font-size: 1.25rem;
+      align-items: center;
+      appearance: none;
+      background-color: #fff;
+      border-radius: 1.25rem;
+      border-style: none;
+      box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
+      box-sizing: border-box;
+      color: #3c4043;
+      cursor: pointer;
+      display: inline-flex;
+      fill: currentcolor;
+      height: 4rem;
+      justify-content: center;
+      letter-spacing: .25px;
+      line-height: normal;
+      max-width: 100%;
+      overflow: visible;
+      padding: 2px 1.25rem;
+      position: relative;
+      text-align: center;
+      text-transform: none;
+      transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1),opacity 15ms linear 30ms,transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+      width: auto;
+      will-change: transform,opacity;
+      z-index: 0;
+      margin-top: 10px;
+      margin-right: 10px;
+      margin-bottom: 20px;
+    }
+    .button-m3:hover, .button-m3.spinning-rainbow {
+      background: #F6F9FE;
+      color: #174ea6;
+      
+    }
+
+    .button-m3:active {
+      box-shadow: 0 4px 4px 0 rgb(60 64 67 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
+      outline: none;
+    }
+
+    .button-m3:focus {
+      outline: none;
+      border: 2px solid #4285f4;
+    }
+
+    .button-m3:not(:disabled) {
+      box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
+    }
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+    #main-content {
+      min-height: calc(100vh - 60px);
+      padding-left: 25px;
+      padding-right: 25px;
+    }
+    footer {
+      background-color: #bde0fe;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      left: 0;
+    }
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-20px);
+      }
+    }
+    #Layer_1 {
+      animation: float 3.25s infinite ease-in-out;
+      margin-top: 20px;
+      margin-right: 20px;
+      width: 75px;
+      height: auto;
+      fill: white;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    // Function to get the current day and display the corresponding schedule
+    function displaySchedule() {
+      var scheduleContainer = document.getElementById('schedule');
+      var today = new Date();
+      var dayOfWeek = today.getDay();
+  
+      // Clear previous schedule
+      scheduleContainer.innerHTML = '';
+  
+      // Using an object to hold schedule times for easier management
+      var schedules = {
+        'weekday': [
+          { period: "1st Period", time: "7:35 AM – 8:35 AM", duration: "(60)" },
+          { period: "2nd Period", time: "8:40 AM – 9:40 AM", duration: "(60)" },
+          { period: "3rd Period", time: "9:45 AM – 10:45 AM", duration: "(60)" },
+          { period: "1st Lunch", time: "10:45 AM – 11:15 AM", duration: "(30)" },
+          { period: "4th Period", time: "10:50 AM – 11:50 AM", duration: "(60)" },
+          { period: "2nd Lunch", time: "11:50 AM – 12:20 PM", duration: "(30)" },
+          { period: "5th Period", time: "11:20 AM – 12:20 PM", duration: "(60)" },
+          { period: "6th Period", time: "12:25 PM – 1:25 PM", duration: "(60)" },
+          { period: "7th Period", time: "1:30 PM – 2:30 PM", duration: "(60)" }
+        ],
+        'weekend': [
+          { period: "1st Period", time: "8:35 AM – 9:25 AM", duration: "(50)" },
+          { period: "2nd Period", time: "9:30 AM – 10:20 AM", duration: "(50)" },
+          { period: "3rd Period", time: "10:25 AM – 11:15 AM", duration: "(50)" },
+          { period: "1st Lunch", time: "11:15 AM – 11:45 AM", duration: "(30)" },
+          { period: "4th Period", time: "11:20 AM – 12:10 PM", duration: "(50)" },
+          { period: "2nd Lunch", time: "12:10 PM – 12:40 PM", duration: "(30)" },
+          { period: "5th Period", time: "11:50 PM – 12:40 PM", duration: "(50)" },
+          { period: "6th Period", time: "12:45 PM – 1:35 PM", duration: "(50)" },
+          { period: "7th Period", time: "1:40 PM – 2:30 PM", duration: "(50)" }
+        ]
+      };
+  
+      var currentSchedule = (dayOfWeek >= 2 && dayOfWeek <= 5) ? schedules.weekday : schedules.weekend;
+  
+      // Create and append the schedule for the current day
+      currentSchedule.forEach(function (slot) {
+        var period = document.createElement('div');
+        period.style.marginBottom = '10px';
+        period.innerHTML = "<strong>" + slot.period + "</strong>: " + slot.time + " " + slot.duration;
+        scheduleContainer.appendChild(period);
+      });
+    }
+  
+    // Call displaySchedule on load and every minute in case the page is left open across midnight
+    displaySchedule();
+    setInterval(displaySchedule, 60000);
+  </script>
+  </head>
+  <body onload="displaySchedule()">
+  <div id="main-content">
+    <h1>CHS Schedule</h1>
+    <p>Easily see the schedule for the right day of the week.</p>
+    <div id="schedule">
+      <!-- Schedule will be populated by the script -->
+    </div>
+<div>
+<footer style="display: flex; align-items: center; justify-content: center;">
+    <?xml version="1.0" encoding="utf-8"?>
+    <!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+       width="150px" height="131.423px" viewBox="0 2.295 150 131.423" enable-background="new 0 2.295 150 131.423"
+       xml:space="preserve">
+    <path d="M145.032,17.013L125.518,5.611c-3.018-1.763-6.579-2.166-9.77-1.105c-0.116,0.039-0.229,0.083-0.344,0.125
+      c-0.023,0.009-0.047,0.017-0.069,0.025c-3.002,1.129-5.448,3.505-6.751,6.583L95.44,42.3L67.097,6.304
+      c-3.493-4.437-6.583-4.398-8.562-3.586c-1.978,0.813-4.202,2.96-3.565,8.57l4.618,40.685L25.121,29.84
+      c-4.832-3.103-7.683-2.021-9.224-0.568c-1.541,1.454-2.786,4.236,0.031,9.241L40.57,82.299L6.791,91.35
+      c-5.554,1.488-6.626,4.695-6.771,6.474c-0.145,1.779,0.394,5.117,5.634,7.485L63.4,131.405c2.157,0.975,4.871,1.658,7.696,2.019
+      c0.224,0.045,0.452,0.071,0.681,0.081c1.298,0.141,2.612,0.214,3.901,0.214c2.398,0,4.706-0.249,6.652-0.771l55.103-14.766
+      c6.875-1.842,10.97-8.934,9.128-15.809l-17.939-66.948l14.459-3.875c5.615-1.504,6.673-5.031,6.867-6.478
+      C150.142,23.627,150.052,19.946,145.032,17.013z M115.014,18.599l3.98,14.855c0,0,0,0.001,0,0.002s0.001,0.001,0.001,0.001
+      l18.339,68.44l-45.27-29.068l8.555-20.216c0.004-0.008,0.008-0.017,0.011-0.025L115.014,18.599z M64.486,17.196l27.043,34.345
+      l-6.969,16.467L69.129,58.1L64.486,17.196z M45.021,90.206l17.545,31.178L12.725,98.86L45.021,90.206z M80.055,124.458
+      c-1.491,0.4-3.422,0.543-5.41,0.467L28.082,42.186l105.7,67.876L80.055,124.458z M126.347,26.936l-3.386-12.639l15.895,9.287
+      L126.347,26.936z"/>
+    </svg>
+    <a href="https://www.morizuru.co/" style="color: white; text-decoration: none; font-family: 'nitti-grotesk', sans-serif; font-weight: 500; font-size: 48px; margin-right: 30px;">Morizuru Co.</a>
+</footer>
+<div>
+<svg>
+  <filter id='noiseFilter'>
+    <feTurbulence 
+      type='fractalNoise' 
+      baseFrequency='0.5' 
+      stitchTiles='stitch'/>
+     <feColorMatrix in="colorNoise" type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0" />
+        <feComposite operator="in" in2="SourceGraphic" result="monoNoise"/>
+        <feBlend in="SourceGraphic" in2="monoNoise" mode="screen" />
+  </filter>
+</svg>
+<div></div>
+</body>
+</html>
