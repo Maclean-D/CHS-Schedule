@@ -1,22 +1,20 @@
 # Coeur d'Alene High School Dynamic Schedule Display
 
 ## Overview
-This project is designed to provide the students of Coeur d'Alene High School with an easy-to-access, dynamic schedule that updates based on the day of the week. The main feature of this web application is to display different schedules for weekdays and weekends.
+This web application provides Coeur d'Alene High School students with a dynamic schedule that updates according to the day of the week.
 
 ## Features
-- **Dynamic Schedule**: Automatically updates the schedule display depending on the day.
-- **Real-Time Updates**: Refreshes every minute to ensure the schedule is always current.
+- **Dynamic Schedule**: Displays different schedules for weekdays and weekends.
+- **Real-Time Updates**: Schedule refreshes every minute to stay current.
 
 ## How to Use
-Simply load the webpage, and the schedule for the current day will be displayed. The schedule will update on its own, so no interaction is required.
+Visit [thatmacdaddy.me/CHS-Schedule/](http://thatmacdaddy.me/CHS-Schedule/) to view the current schedule. No interaction needed; it updates automatically.
 
 ## Setup
-To set up the project locally:
-1. Clone the repository to your local machine.
-2. Open the `index.html` file in a web browser.
+No setup required for general use—simply visit the website link above.
 
 ## Contribution
-Contributions to improve the project are welcome. Please fork the project and submit a pull request with your changes.
+Contributions are welcome. Please fork the repository, make changes, and submit a pull request.
 
 ## License
-This project is open-sourced under the MIT license.
+This project is licensed under the MIT license.
